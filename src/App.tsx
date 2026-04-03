@@ -3,10 +3,11 @@ import { HomeScreen } from "./components/home-screen";
 import { CardPlayer } from "./components/card-player";
 import { StudyPlayer } from "./components/study-player";
 import { DrillPlayer } from "./components/drill-player";
+import { DeckDetail } from "./components/deck-detail";
 import { useDeck } from "./hooks/use-deck";
 import type { TrainingMode, Deck } from "./types/card";
 
-type AppView = "home" | TrainingMode;
+type AppView = "home" | "tree" | TrainingMode;
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr];
@@ -47,6 +48,16 @@ export default function App() {
     [loadDeckById]
   );
 
+  const handleViewTree = useCallback(
+    async (deckFile: string) => {
+      setShouldShuffle(false);
+      setWeakOnly(false);
+      setPendingView("tree");
+      await loadDeckById(deckFile);
+    },
+    [loadDeckById]
+  );
+
   const handleHome = useCallback(() => {
     setView("home");
     setPendingView(null);
@@ -77,7 +88,17 @@ export default function App() {
   }
 
   if (view === "home" || !processedDeck) {
-    return <HomeScreen decks={decks} onStart={handleStart} />;
+    return <HomeScreen decks={decks} onStart={handleStart} onViewTree={handleViewTree} />;
+  }
+
+  if (view === "tree") {
+    return (
+      <DeckDetail
+        deck={processedDeck}
+        onBack={handleHome}
+        onDrill={() => { setView("drill"); }}
+      />
+    );
   }
 
   if (view === "drill" || view === "reverse") {

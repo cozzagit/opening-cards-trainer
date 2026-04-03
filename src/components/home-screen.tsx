@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { BookOpen, Brain, Layers, Target, Shuffle, Zap, Eye, Flame } from "lucide-react";
+import { BookOpen, Brain, Layers, Target, Shuffle, Zap, Eye, Flame, GitBranch } from "lucide-react";
 import { getDeckSummary } from "../lib/mastery";
 import { getStreak } from "../lib/streak";
 import type { DeckMeta, TrainingMode, MasteryLevel } from "../types/card";
@@ -8,9 +8,10 @@ import { MASTERY_COLORS } from "../types/card";
 interface HomeScreenProps {
   decks: DeckMeta[];
   onStart: (deckFile: string, mode: TrainingMode, shuffle?: boolean, weakOnly?: boolean) => void;
+  onViewTree?: (deckFile: string) => void;
 }
 
-export function HomeScreen({ decks, onStart }: HomeScreenProps) {
+export function HomeScreen({ decks, onStart, onViewTree }: HomeScreenProps) {
   const streak = useMemo(() => getStreak(), []);
 
   return (
@@ -53,7 +54,7 @@ export function HomeScreen({ decks, onStart }: HomeScreenProps) {
 
         <div className="space-y-3">
           {decks.map(deck => (
-            <DeckCard key={deck.deck_id} deck={deck} onStart={onStart} />
+            <DeckCard key={deck.deck_id} deck={deck} onStart={onStart} onViewTree={onViewTree} />
           ))}
           {decks.length === 0 && (
             <div className="text-center py-10 text-tertiary text-sm font-sans">Caricamento mazzi...</div>
@@ -74,9 +75,10 @@ export function HomeScreen({ decks, onStart }: HomeScreenProps) {
   );
 }
 
-function DeckCard({ deck, onStart }: {
+function DeckCard({ deck, onStart, onViewTree }: {
   deck: DeckMeta;
   onStart: (file: string, mode: TrainingMode, shuffle?: boolean, weakOnly?: boolean) => void;
+  onViewTree?: (file: string) => void;
 }) {
   const summary = useMemo(() => getDeckSummary(deck.deck_id, deck.card_count), [deck.deck_id, deck.card_count]);
 
@@ -153,6 +155,17 @@ function DeckCard({ deck, onStart }: {
             Studio
           </button>
         </div>
+
+        {/* Tree view button */}
+        {onViewTree && (
+          <button
+            onClick={() => onViewTree(deck.file)}
+            className="w-full flex items-center justify-center gap-1.5 py-2 text-xs font-sans text-tertiary hover:text-secondary transition-colors"
+          >
+            <GitBranch className="w-3 h-3" />
+            Mappa varianti
+          </button>
+        )}
 
         {/* Mastery legend */}
         <div className="flex items-center justify-center gap-3 pt-1">
