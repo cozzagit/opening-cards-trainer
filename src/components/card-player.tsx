@@ -68,7 +68,6 @@ export function CardPlayer({ deck, onHome }: CardPlayerProps) {
             onNext={session.next}
             cardIndex={session.currentIndex}
             totalCards={session.cards.length}
-            previousResult={session.responses.get(session.currentCard.id)}
           />
         )}
       </div>
