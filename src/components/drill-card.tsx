@@ -206,17 +206,37 @@ export function DrillCard({ card, mastery = "new", onResponse }: DrillCardProps)
           </div>
         )}
 
-        {/* Footer */}
-        <div className="px-4 pb-2 flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <div className="w-1.5 h-1.5 rounded-full" style={{ background: catColor }} />
-            <span className="text-[9px] font-mono text-tertiary">{card.id}</span>
+        {/* Footer with phase dots */}
+        <div className="px-4 pb-2.5 flex items-center justify-between">
+          <span className="text-[9px] font-mono text-tertiary">{card.id}</span>
+          <div className="flex items-center gap-1.5">
+            <PhaseDot active={phase === "visualize"} done={phase !== "visualize"} label="Visualizza" color={catColor} />
+            <div className="w-3 h-px bg-border" />
+            <PhaseDot active={phase === "verify"} done={phase === "answer"} label="Verifica" color={catColor} />
+            <div className="w-3 h-px bg-border" />
+            <PhaseDot active={phase === "answer"} done={false} label="Valuta" color={catColor} />
           </div>
-          <span className="text-[9px] font-mono text-tertiary">
-            {phase === "visualize" ? "Fase 1 · Visualizza" : phase === "verify" ? "Fase 2 · Verifica" : "Fase 3 · Valuta"}
-          </span>
         </div>
       </div>
+    </div>
+  );
+}
+
+function PhaseDot({ active, done, label, color }: { active: boolean; done: boolean; label: string; color: string }) {
+  return (
+    <div className="flex flex-col items-center gap-0.5">
+      <div
+        className="rounded-full transition-all duration-300"
+        style={{
+          width: active ? 10 : 6,
+          height: active ? 10 : 6,
+          background: active ? color : done ? color : "var(--border)",
+          opacity: active ? 1 : done ? 0.5 : 0.3,
+        }}
+      />
+      {active && (
+        <span className="text-[7px] font-sans text-tertiary">{label}</span>
+      )}
     </div>
   );
 }

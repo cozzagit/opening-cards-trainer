@@ -107,7 +107,7 @@ export function CardFace({ card, isRevealed, onReveal, onRespond, cardIndex, tot
           >
             <Eye className="w-4 h-4" />
             Mostra soluzione
-            <span className="text-[10px] opacity-50 ml-1 font-mono">Space</span>
+            <span className="text-[10px] opacity-50 ml-1 font-mono hidden sm:inline">Space</span>
           </button>
         </div>
 
@@ -187,7 +187,7 @@ function RespBtn({ onClick, icon, label, kbd, color }: {
     >
       {icon}
       <span className="text-[11px] font-sans font-semibold">{label}</span>
-      <span className="text-[9px] font-mono opacity-40">{kbd}</span>
+      <span className="text-[9px] font-mono opacity-40 hidden sm:inline">{kbd}</span>
     </button>
   );
 }

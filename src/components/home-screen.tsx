@@ -61,8 +61,8 @@ export function HomeScreen({ decks, onStart, onViewTree }: HomeScreenProps) {
           )}
         </div>
 
-        {/* Keyboard hints */}
-        <div className="mt-6 text-center">
+        {/* Keyboard hints — desktop only */}
+        <div className="mt-6 text-center hidden sm:block">
           <p className="text-[9px] text-tertiary font-sans">
             <span className="kbd">Space</span> avanza fase &middot;
             <span className="kbd ml-1">&larr;</span><span className="kbd">&rarr;</span> naviga &middot;
