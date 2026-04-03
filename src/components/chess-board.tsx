@@ -35,9 +35,10 @@ function applyMoves(moves: string[]): string {
   const board = parseFenToBoard(START_FEN);
   let whiteToMove = true;
 
-  for (const token of moves) {
-    // Skip move numbers like "1." "2."
-    if (/^\d+\.+$/.test(token)) continue;
+  for (let token of moves) {
+    // Strip move numbers: "1.e4" → "e4", "2...Qxd5" → "Qxd5", "12." → skip
+    token = token.replace(/^\d+\.{1,3}/, "");
+    if (!token) continue;
     const move = token.replace(/[+#!?]/g, "");
 
     if (move === "O-O" || move === "0-0") {
