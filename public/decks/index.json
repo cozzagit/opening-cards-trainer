@@ -16,7 +16,7 @@
   {
     "deck_id": "sicilian_v1",
     "deck_name": "Difesa Siciliana",
-    "description": "36 carte panoramiche: Najdorf, Dragon, Sveshnikov, Scheveningen, anti-siciliane (1.e4 c5)",
+    "description": "36 carte avanzate: Najdorf (Bg5/Be3/Be2/f3), Dragon Jugoslavo, Sveshnikov, Scheveningen Keres, Taimanov, Rossolimo, Moscow, Alapin, Maroczy Bind, Grand Prix (1.e4 c5)",
     "card_count": 36,
     "file": "sicilian_v1.json"
   },
@@ -30,7 +30,7 @@
   {
     "deck_id": "french_v1",
     "deck_name": "Difesa Francese",
-    "description": "36 carte: Advance, Winawer, Classical, Tarrasch, Exchange e il problema dell'alfiere (1.e4 e6)",
+    "description": "36 carte approfondite: Advance Nh6-f5 e Milner-Barry, Winawer Poisoned Pawn, Classical/McCutcheon, Tarrasch IQP, Rubinstein, rotture ...f6, rerouting alfiere (1.e4 e6)",
     "card_count": 36,
     "file": "french_v1.json"
   }
