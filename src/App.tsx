@@ -2,10 +2,11 @@ import { useState, useCallback, useMemo, useEffect } from "react";
 import { HomeScreen } from "./components/home-screen";
 import { CardPlayer } from "./components/card-player";
 import { StudyPlayer } from "./components/study-player";
+import { DrillPlayer } from "./components/drill-player";
 import { useDeck } from "./hooks/use-deck";
 import type { TrainingMode, Deck } from "./types/card";
 
-type AppView = "home" | "quiz" | "study";
+type AppView = "home" | TrainingMode;
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr];
@@ -20,6 +21,7 @@ export default function App() {
   const { decks, activeDeck, loading, error, loadDeckById } = useDeck();
   const [view, setView] = useState<AppView>("home");
   const [shouldShuffle, setShouldShuffle] = useState(false);
+  const [weakOnly, setWeakOnly] = useState(false);
   const [pendingView, setPendingView] = useState<AppView | null>(null);
 
   const processedDeck = useMemo<Deck | null>(() => {
@@ -28,7 +30,6 @@ export default function App() {
     return { ...activeDeck, cards: shuffleArray(activeDeck.cards) };
   }, [activeDeck, shouldShuffle]);
 
-  // When deck finishes loading, transition to the pending view
   useEffect(() => {
     if (pendingView && processedDeck && !loading) {
       setView(pendingView);
@@ -37,8 +38,9 @@ export default function App() {
   }, [pendingView, processedDeck, loading]);
 
   const handleStart = useCallback(
-    async (deckFile: string, mode: TrainingMode, shuffle?: boolean) => {
+    async (deckFile: string, mode: TrainingMode, shuffle?: boolean, weak?: boolean) => {
       setShouldShuffle(shuffle ?? false);
+      setWeakOnly(weak ?? false);
       setPendingView(mode);
       await loadDeckById(deckFile);
     },
@@ -49,6 +51,7 @@ export default function App() {
     setView("home");
     setPendingView(null);
     setShouldShuffle(false);
+    setWeakOnly(false);
   }, []);
 
   if (error) {
@@ -62,17 +65,23 @@ export default function App() {
     );
   }
 
-  // Show loading while deck is being fetched
   if (loading || pendingView) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-sm text-secondary font-sans">Caricamento mazzo...</div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+          <span className="text-sm text-secondary font-sans">Caricamento...</span>
+        </div>
       </div>
     );
   }
 
   if (view === "home" || !processedDeck) {
     return <HomeScreen decks={decks} onStart={handleStart} />;
+  }
+
+  if (view === "drill" || view === "reverse") {
+    return <DrillPlayer deck={processedDeck} onHome={handleHome} weakOnly={weakOnly} />;
   }
 
   if (view === "study") {
