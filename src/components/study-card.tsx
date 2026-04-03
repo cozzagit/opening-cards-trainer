@@ -24,7 +24,7 @@ const CAT_LIGHT: Record<CardCategory, string> = {
 const DIFF_DIAMONDS: Record<CardDifficulty, number> = { base: 1, intermediate: 2, advanced: 3 };
 
 export function StudyCard({ card }: { card: Card }) {
-  const [showAnswer, setShowAnswer] = useState(true);
+  const [showAnswer, setShowAnswer] = useState(false);
   const catColor = CAT_COLORS[card.category];
   const catLight = CAT_LIGHT[card.category];
   const n = DIFF_DIAMONDS[card.difficulty];
