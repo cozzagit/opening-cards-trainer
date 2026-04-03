@@ -1,0 +1,722 @@
+{
+  "deck_id": "scandinavian_v1",
+  "deck_name": "Difesa Scandinava",
+  "description": "Mazzo pilota: 36 carte sulla Difesa Scandinava (1.e4 d5). Continuazioni principali, riconoscimento varianti, piani strategici e errori tipici.",
+  "card_count": 36,
+  "cards": [
+    {
+      "id": "SCA-B-01",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Linea introduttiva",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5"],
+        "question": "Qual è la ripresa classica del Nero?"
+      },
+      "back": {
+        "answer_san": "2...Qxd5",
+        "explanation": "Il Nero recupera subito il pedone e imposta la Scandinava classica."
+      },
+      "tags": ["recall", "mainline", "basic"]
+    },
+    {
+      "id": "SCA-B-02",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Main Line 3.Nc3",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3"],
+        "question": "Dove ritira la donna il Nero nella linea classica?"
+      },
+      "back": {
+        "answer_san": "3...Qa5",
+        "explanation": "La casa a5 è la più popolare: la donna resta attiva e fuori dalla presa di Nc3."
+      },
+      "tags": ["recall", "mainline"]
+    },
+    {
+      "id": "SCA-B-03",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Main Line 4.d4",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4"],
+        "question": "Qual è lo sviluppo naturale del Nero?"
+      },
+      "back": {
+        "answer_san": "4...Nf6",
+        "explanation": "Sviluppa il cavallo verso il centro e prepara ...Bf5 o ...Bg4."
+      },
+      "tags": ["recall", "development"]
+    },
+    {
+      "id": "SCA-B-04",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Main Line 5.Nf3",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3"],
+        "question": "Qual è la mossa consolidante del Nero?"
+      },
+      "back": {
+        "answer_san": "5...c6",
+        "explanation": "Consolida d5, prepara ...Bf5, dà una base solida alla struttura."
+      },
+      "tags": ["recall", "structure"]
+    },
+    {
+      "id": "SCA-B-05",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Sviluppo alfiere",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "c6"],
+        "question": "Dove sviluppa l'alfiere campochiaro il Nero?"
+      },
+      "back": {
+        "answer_san": "6...Bf5",
+        "explanation": "L'alfiere esce PRIMA di ...e6 per non restare chiuso nella catena pedonale."
+      },
+      "tags": ["recall", "development", "key-idea"]
+    },
+    {
+      "id": "SCA-B-06",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Ritirata in d8",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3"],
+        "question": "Qual è l'alternativa classica a 3...Qa5?"
+      },
+      "back": {
+        "answer_san": "3...Qd6",
+        "explanation": "La ritirata moderna: la donna resta più centralizzata e supporta ...e5 o ...c6."
+      },
+      "tags": ["recall", "alternative"]
+    },
+    {
+      "id": "SCA-B-07",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "2...Nf6 — Marshall",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5"],
+        "question": "Qual è l'alternativa gambitto del Nero a 2...Qxd5?"
+      },
+      "back": {
+        "answer_san": "2...Nf6",
+        "explanation": "Il Nero rinuncia alla ripresa immediata e punta su sviluppo rapido e iniziativa."
+      },
+      "tags": ["recall", "gambit"]
+    },
+    {
+      "id": "SCA-B-08",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "2...Nf6 3.d4",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6", "3.d4", "Nxd5"],
+        "question": "Qual è la risposta tipica del Bianco?"
+      },
+      "back": {
+        "answer_san": "4.Nf3",
+        "explanation": "Sviluppo naturale: il Bianco mantiene il centro e prepara Bc4 o Bd3."
+      },
+      "tags": ["recall", "white-reply"]
+    },
+    {
+      "id": "SCA-B-09",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Piano ...Bg4",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3"],
+        "question": "Qual è l'alternativa a 5...c6 per il Nero?"
+      },
+      "back": {
+        "answer_san": "5...Bg4",
+        "explanation": "L'alfiere esce subito su g4 inchiodando il cavallo e creando pressione."
+      },
+      "tags": ["recall", "alternative", "pin"]
+    },
+    {
+      "id": "SCA-B-10",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Arrocco",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "Bf5", "6.Bc4", "e6"],
+        "question": "Qual è la priorità del Nero?"
+      },
+      "back": {
+        "answer_san": "7...Bb4 o 7...Be7 seguiti da 0-0",
+        "explanation": "Il Nero deve arroccare rapidamente. Be7 è più solido, Bb4 più attivo."
+      },
+      "tags": ["recall", "castling"]
+    },
+    {
+      "id": "SCA-B-11",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "3.Nf3 alternativa",
+      "side_to_move": "white",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5"],
+        "question": "Qual è l'alternativa calma del Bianco a 3.Nc3?"
+      },
+      "back": {
+        "answer_san": "3.Nf3",
+        "explanation": "Evita di forzare la ritirata della donna e punta su sviluppo tranquillo."
+      },
+      "tags": ["recall", "white-system"]
+    },
+    {
+      "id": "SCA-B-12",
+      "category": "continuation",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Variante d3",
+      "side_to_move": "white",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "c6"],
+        "question": "Qual è un'impostazione aggressiva del Bianco?"
+      },
+      "back": {
+        "answer_san": "6.Bc4",
+        "explanation": "L'alfiere punta su f7 e prepara un attacco rapido al lato di re."
+      },
+      "tags": ["recall", "white-attack"]
+    },
+    {
+      "id": "SCA-I-01",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Main Line — Bd2",
+      "side_to_move": "white",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "c6", "6.Bc4", "Bf5"],
+        "question": "Qual è una mossa posizionale precisa del Bianco?"
+      },
+      "back": {
+        "answer_san": "7.Bd2",
+        "explanation": "Connette le torri, protegge il cavallo c3 e prepara 0-0 o Nd5."
+      },
+      "tags": ["positional", "setup"]
+    },
+    {
+      "id": "SCA-I-02",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Qd6 — piano ...e5",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qd6", "4.d4", "Nf6", "5.Nf3"],
+        "question": "Qual è il piano dinamico del Nero con la donna in d6?"
+      },
+      "back": {
+        "answer_san": "5...a6 seguito da ...Bg4 e ...e5",
+        "explanation": "Il Nero prepara ...Bg4, poi ...e5 per liberarsi al centro approfittando della donna che supporta d6."
+      },
+      "tags": ["plan", "dynamic"]
+    },
+    {
+      "id": "SCA-I-03",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "2...Nf6 3.Bb5+",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6", "3.Bb5+"],
+        "question": "Come risponde il Nero allo scacco?"
+      },
+      "back": {
+        "answer_san": "3...Bd7",
+        "explanation": "Blocca naturalmente. Dopo 4.Bc4 Bg4 il Nero ha buon gioco."
+      },
+      "tags": ["theory", "check-response"]
+    },
+    {
+      "id": "SCA-I-04",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Icelandic Gambit",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6", "3.c4", "e6"],
+        "question": "Che nome ha questa continuazione e qual è l'idea?"
+      },
+      "back": {
+        "answer_san": "Gambetto Islandese (3...e6)",
+        "explanation": "Il Nero sacrifica un pedone per sviluppo rapidissimo e attacco dopo dxe6 Bxe6."
+      },
+      "tags": ["gambit", "sacrifice", "initiative"]
+    },
+    {
+      "id": "SCA-I-05",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Qa5 — Ne5 aggressivo",
+      "side_to_move": "white",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "Bg4"],
+        "question": "Qual è la continuazione aggressiva del Bianco?"
+      },
+      "back": {
+        "answer_san": "6.h3",
+        "explanation": "Obbliga l'alfiere a decidere: scambiare su f3 (rinforzando il centro bianco) o ritirarsi."
+      },
+      "tags": ["attack", "forcing"]
+    },
+    {
+      "id": "SCA-I-06",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Qa5 Bc4 — Nd5",
+      "side_to_move": "white",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Bc4"],
+        "question": "Perché il Bianco sceglie Bc4 prima di Nf3?"
+      },
+      "back": {
+        "answer_san": "Puntare su f7 e preparare una rapida iniziativa.",
+        "explanation": "La minaccia latente è Nd5, costringendo la donna a spostarsi ancora."
+      },
+      "tags": ["tactics", "initiative"]
+    },
+    {
+      "id": "SCA-I-07",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Qd8 rara",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3"],
+        "question": "Dove può ritirarsi la donna del Nero per impostare un gioco solido ma passivo?"
+      },
+      "back": {
+        "answer_san": "3...Qd8",
+        "explanation": "Scelta rara ma solida. Il Nero perde tempi ma mantiene una struttura molto robusta."
+      },
+      "tags": ["alternative", "solid"]
+    },
+    {
+      "id": "SCA-I-08",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Fianchetto Bianco",
+      "side_to_move": "white",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.g3"],
+        "question": "Qual è l'idea del Bianco con 4.g3?"
+      },
+      "back": {
+        "answer_san": "Fianchettare l'alfiere in g2 e controllare la grande diagonale.",
+        "explanation": "Bg2 mira su d5 e crea pressione a lungo termine sul centro nero."
+      },
+      "tags": ["fianchetto", "positional"]
+    },
+    {
+      "id": "SCA-I-09",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Main Line profonda",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "c6", "6.Bc4", "Bf5", "7.Bd2", "e6"],
+        "question": "Qual è la continuazione del Nero per completare lo sviluppo?"
+      },
+      "back": {
+        "answer_san": "8...Bb4 o 8...Be7, poi 0-0 e ...Nbd7",
+        "explanation": "Struttura completa: alfiere campochiaro fuori, arrocco, cavallo su d7 per supportare c5 o e5."
+      },
+      "tags": ["setup", "complete-development"]
+    },
+    {
+      "id": "SCA-I-10",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Anti-Scandinava 2.Nc3",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.Nc3"],
+        "question": "Come reagisce il Nero a questa mossa inusuale?"
+      },
+      "back": {
+        "answer_san": "2...d4 o 2...dxe4",
+        "explanation": "2...d4 guadagna spazio; 2...dxe4 3.Nxe4 porta a posizioni tipo Francese invertita."
+      },
+      "tags": ["sideline", "surprise"]
+    },
+    {
+      "id": "SCA-I-11",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Qd6 — piano ...Nc6",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qd6", "4.d4", "Nf6", "5.Nf3", "a6"],
+        "question": "Perché 5...a6 è una mossa chiave nella variante con Qd6?"
+      },
+      "back": {
+        "answer_san": "Prepara ...b5, ...Bb7 e impedisce Nb5.",
+        "explanation": "Il Nero espande sul lato di donna e prepara una struttura tipo ...b5-Bb7 molto solida."
+      },
+      "tags": ["plan", "queenside"]
+    },
+    {
+      "id": "SCA-I-12",
+      "category": "continuation",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Keres Gambit style",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6", "3.c4"],
+        "question": "Come risponde il Nero se il Bianco difende il pedone con c4?"
+      },
+      "back": {
+        "answer_san": "3...c6",
+        "explanation": "Sfida il centro. Dopo 4.dxc6 Nxc6 il Nero ha ottimo sviluppo per il pedone sacrificato."
+      },
+      "tags": ["gambit", "counterplay"]
+    },
+    {
+      "id": "SCA-V-01",
+      "category": "recognition",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Main Line Qa5",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5"],
+        "question": "Che impianto stiamo entrando?"
+      },
+      "back": {
+        "answer_san": "Main Line classica della Scandinava con Qa5",
+        "explanation": "La variante più giocata a tutti i livelli. Solida e ben analizzata."
+      },
+      "tags": ["recognition", "mainline"]
+    },
+    {
+      "id": "SCA-V-02",
+      "category": "recognition",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Marshall 2...Nf6",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6"],
+        "question": "Che approccio del Nero è?"
+      },
+      "back": {
+        "answer_san": "Scandinava Marshall (2...Nf6)",
+        "explanation": "Più dinamica: il Nero rinuncia alla ripresa immediata per sviluppo e iniziativa."
+      },
+      "tags": ["recognition", "gambit"]
+    },
+    {
+      "id": "SCA-V-03",
+      "category": "recognition",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Riconoscimento Qd6",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qd6"],
+        "question": "Che variante è questa e perché è diversa da 3...Qa5?"
+      },
+      "back": {
+        "answer_san": "Variante moderna con Qd6",
+        "explanation": "La donna in d6 supporta ...e5 e resta più centralizzata, ma blocca l'alfiere campochiaro."
+      },
+      "tags": ["recognition", "comparison"]
+    },
+    {
+      "id": "SCA-V-04",
+      "category": "recognition",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Gambetto Islandese",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6", "3.c4", "e6"],
+        "question": "Che apertura stiamo entrando?"
+      },
+      "back": {
+        "answer_san": "Gambetto Islandese / Icelandic Gambit",
+        "explanation": "Sacrificio aggressivo di pedone per sviluppo e attacco. Pericoloso per il Bianco impreparato."
+      },
+      "tags": ["recognition", "gambit"]
+    },
+    {
+      "id": "SCA-V-05",
+      "category": "recognition",
+      "difficulty": "advanced",
+      "opening": "Difesa Scandinava",
+      "variation": "Portuguesa",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Nf6", "3.d4", "Bg4"],
+        "question": "Che variante è questa della Scandinava con 2...Nf6?"
+      },
+      "back": {
+        "answer_san": "Variante Portuguesa",
+        "explanation": "Rara ma insidiosa: il Nero sviluppa l'alfiere aggressivamente prima di riprendere il pedone."
+      },
+      "tags": ["recognition", "rare"]
+    },
+    {
+      "id": "SCA-V-06",
+      "category": "recognition",
+      "difficulty": "advanced",
+      "opening": "Difesa Scandinava",
+      "variation": "Blackburne-Kloosterboer",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qe5+"],
+        "question": "Che variante è? È praticabile?"
+      },
+      "back": {
+        "answer_san": "Variante Blackburne-Kloosterboer (3...Qe5+)",
+        "explanation": "Rara e generalmente sconsigliata: la donna è esposta e il Bianco sviluppa con guadagno di tempi."
+      },
+      "tags": ["recognition", "dubious"]
+    },
+    {
+      "id": "SCA-E-01",
+      "category": "error",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Donna al centro",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5"],
+        "question": "Perché il Nero non deve lasciare la donna al centro dopo 3.Nc3?"
+      },
+      "back": {
+        "answer_san": "Perché subisce guadagno di tempi.",
+        "explanation": "Il Bianco guadagna sviluppo attaccando la donna. Restare in d5 è un errore strategico."
+      },
+      "tags": ["error", "tempo"]
+    },
+    {
+      "id": "SCA-E-02",
+      "category": "error",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "3...Qe5+",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qe5+?!"],
+        "question": "Che problema pratico crea questa scelta?"
+      },
+      "back": {
+        "answer_san": "La donna resta esposta al centro.",
+        "explanation": "Il Bianco blocca con Be2 e sviluppa con tempi. La donna dovrà muoversi ancora."
+      },
+      "tags": ["error", "exposure"]
+    },
+    {
+      "id": "SCA-E-03",
+      "category": "error",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "...e6 prima di ...Bf5",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "c6", "6.Bd3?!", "e6?!"],
+        "question": "Perché ...e6 qui è un'imprecisione?"
+      },
+      "back": {
+        "answer_san": "L'alfiere campochiaro resta chiuso dietro la catena pedonale.",
+        "explanation": "Regola fondamentale della Scandinava: PRIMA ...Bf5 (o ...Bg4), POI ...e6."
+      },
+      "tags": ["error", "key-rule", "bishop"]
+    },
+    {
+      "id": "SCA-E-04",
+      "category": "error",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Arrocco ritardato",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Bc4"],
+        "question": "Perché il Nero non deve ritardare troppo l'arrocco?"
+      },
+      "back": {
+        "answer_san": "Il Bianco può lanciare un attacco diretto al re al centro.",
+        "explanation": "Bc4 + Nf3 + d4 già creano minacce: il Nero deve arroccare entro poche mosse."
+      },
+      "tags": ["error", "king-safety"]
+    },
+    {
+      "id": "SCA-E-05",
+      "category": "error",
+      "difficulty": "advanced",
+      "opening": "Difesa Scandinava",
+      "variation": "...b5 prematuro",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Nf6", "5.Nf3", "b5?!"],
+        "question": "Perché ...b5 qui è prematuro?"
+      },
+      "back": {
+        "answer_san": "Indebolisce il lato di donna senza compensazione.",
+        "explanation": "Il Bianco può giocare a4! attaccando la catena pedonale. Prima c6, poi eventualmente ...b5."
+      },
+      "tags": ["error", "premature", "structure"]
+    },
+    {
+      "id": "SCA-E-06",
+      "category": "error",
+      "difficulty": "advanced",
+      "opening": "Difesa Scandinava",
+      "variation": "...Qxd4?? blunder",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": ["1.e4", "d5", "2.exd5", "Qxd5", "3.Nc3", "Qa5", "4.d4", "Qxd4?"],
+        "question": "Perché catturare il pedone d4 è un errore grave?"
+      },
+      "back": {
+        "answer_san": "5.Bd3 o 5.Be3 con iniziativa decisiva.",
+        "explanation": "La donna è intrappolata al centro. Il Bianco sviluppa con tempi e ottiene attacco schiacciante."
+      },
+      "tags": ["error", "blunder", "tactics"]
+    },
+    {
+      "id": "SCA-C-01",
+      "category": "concept",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Concetto base",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": [],
+        "question": "Perché nella Scandinava il Nero accetta di muovere presto la donna?"
+      },
+      "back": {
+        "answer_san": "Per recuperare il pedone e ottenere una struttura chiara.",
+        "explanation": "Il Nero scambia tempi di donna per una posizione solida con piani chiari e prevedibili."
+      },
+      "tags": ["concept", "philosophy"]
+    },
+    {
+      "id": "SCA-C-02",
+      "category": "concept",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Rischio principale",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": [],
+        "question": "Qual è il rischio tipico della Scandinava per il Nero?"
+      },
+      "back": {
+        "answer_san": "Perdere tempi con la donna e restare indietro di sviluppo.",
+        "explanation": "Se il Nero gioca passivamente, il Bianco accumula tempi di sviluppo e può attaccare."
+      },
+      "tags": ["concept", "risk"]
+    },
+    {
+      "id": "SCA-C-03",
+      "category": "concept",
+      "difficulty": "base",
+      "opening": "Difesa Scandinava",
+      "variation": "Vantaggio pratico",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": [],
+        "question": "Qual è il vantaggio pratico della Scandinava?"
+      },
+      "back": {
+        "answer_san": "Porta il Bianco fuori dal territorio e4-e5.",
+        "explanation": "Il Bianco non può impostare i tipici schemi di e4. I piani sono specifici e preparabili."
+      },
+      "tags": ["concept", "practical"]
+    },
+    {
+      "id": "SCA-C-04",
+      "category": "concept",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Alfiere campochiaro",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": [],
+        "question": "Perché l'alfiere campochiaro deve uscire PRIMA di ...e6?"
+      },
+      "back": {
+        "answer_san": "Perché ...e6 lo imprigiona dietro la catena pedonale.",
+        "explanation": "Regola #1 della Scandinava: Bf5 o Bg4 PRIMA di chiudere la diagonale con e6."
+      },
+      "tags": ["concept", "key-rule"]
+    },
+    {
+      "id": "SCA-C-05",
+      "category": "concept",
+      "difficulty": "intermediate",
+      "opening": "Difesa Scandinava",
+      "variation": "Qa5 vs Qd6",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": [],
+        "question": "Qual è la differenza strategica tra 3...Qa5 e 3...Qd6?"
+      },
+      "back": {
+        "answer_san": "Qa5 è più classica e solida; Qd6 è più moderna e supporta ...e5.",
+        "explanation": "Qa5: piano con ...c6, ...Bf5, ...e6. Qd6: più flessibile ma la donna può essere un bersaglio."
+      },
+      "tags": ["concept", "comparison"]
+    },
+    {
+      "id": "SCA-C-06",
+      "category": "concept",
+      "difficulty": "advanced",
+      "opening": "Difesa Scandinava",
+      "variation": "Scelta tra 2...Qxd5 e 2...Nf6",
+      "side_to_move": "black",
+      "front": {
+        "moves_san": [],
+        "question": "Quando preferire 2...Nf6 rispetto a 2...Qxd5?"
+      },
+      "back": {
+        "answer_san": "Quando si vuole gioco dinamico e si è pronti a sacrificare materiale.",
+        "explanation": "2...Nf6 porta a posizioni più taglienti (Icelandic Gambit, Portuguesa). 2...Qxd5 è più controllato."
+      },
+      "tags": ["concept", "decision-making"]
+    }
+  ]
+}
