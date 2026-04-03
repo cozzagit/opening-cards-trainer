@@ -5,5 +5,12 @@
     "description": "36 carte: continuazioni, varianti, piani ed errori tipici della Scandinava (1.e4 d5)",
     "card_count": 36,
     "file": "scandinavian_v1.json"
+  },
+  {
+    "deck_id": "kings_gambit_v1",
+    "deck_name": "Gambetto di Re",
+    "description": "36 carte: Gambetto Accettato, Rifiutato, Falkbeer, Muzio, Kieseritzky e piani strategici (1.e4 e5 2.f4)",
+    "card_count": 36,
+    "file": "kings_gambit_v1.json"
   }
 ]

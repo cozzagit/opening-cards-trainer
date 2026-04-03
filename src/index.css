@@ -1,39 +1,48 @@
 @import "tailwindcss";
 
 :root {
+  /* Art Director palette — warm, muted, print-safe */
   --bg-page: #F7F5F0;
   --bg-card: #FFFFFF;
-  --bg-card-back: #1C1917;
+  --bg-card-back: #3D3832;
   --bg-surface: #F0EDE6;
   --bg-hover: #E8E4DB;
 
-  --text-primary: #1C1917;
-  --text-secondary: #57534E;
-  --text-tertiary: #A8A29E;
-  --text-inverse: #FAFAF9;
+  --text-primary: #2C2825;
+  --text-secondary: #6B655C;
+  --text-tertiary: #9E9789;
+  --text-inverse: #F7F5F0;
 
-  --border: #D6D3CD;
-  --border-light: #E7E5E0;
+  --border: #D6D1C7;
+  --border-light: #E8E4DD;
 
   --accent: #7C6F4A;
   --accent-hover: #6B5E3D;
+  --accent-bright: #A08E64;
   --accent-light: #F5F0E0;
 
-  --correct: #16A34A;
-  --correct-bg: #F0FDF4;
-  --incorrect: #DC2626;
-  --incorrect-bg: #FEF2F2;
-  --review: #D97706;
-  --review-bg: #FFFBEB;
+  --correct: #3D7A5F;
+  --correct-bg: #F3F8F5;
+  --incorrect: #9E3B3B;
+  --incorrect-bg: #FAF4F4;
+  --review: #B8860B;
+  --review-bg: #FBF8F0;
 
-  --category-continuation: #3B82F6;
-  --category-recognition: #8B5CF6;
-  --category-concept: #059669;
-  --category-error: #DC2626;
+  /* Category colors — muted, CMYK-safe, serious */
+  --cat-continuation: #2B5B8A;
+  --cat-recognition: #6B4C8A;
+  --cat-concept: #3D7A5F;
+  --cat-error: #9E3B3B;
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --cat-continuation-light: #F3F6F9;
+  --cat-recognition-light: #F6F3F9;
+  --cat-concept-light: #F3F8F5;
+  --cat-error-light: #FAF4F4;
+
+  /* Typography — Crimson Pro (serif) + JetBrains Mono + Outfit (labels) */
+  --font-serif: "Crimson Pro", "Georgia", "Cambria", serif;
   --font-mono: "JetBrains Mono", "SF Mono", monospace;
-  --font-serif: "Georgia", "Cambria", serif;
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
 }
 
 @theme inline {
@@ -62,9 +71,7 @@
   --font-serif: var(--font-serif);
 }
 
-* {
-  -webkit-tap-highlight-color: transparent;
-}
+* { -webkit-tap-highlight-color: transparent; }
 
 body {
   margin: 0;
@@ -74,21 +81,65 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Card flip */
+/* ── Card flip animation ── */
 .card-container { perspective: 1200px; }
 .card-inner {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.45s ease;
   transform-style: preserve-3d;
 }
-.card-inner.flipped { transform: rotateY(180deg); }
+.card-inner.flipped {
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
 .card-front, .card-back { backface-visibility: hidden; }
 .card-back { transform: rotateY(180deg); }
+
+/* ── Typography classes ── */
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+.font-sans { font-family: var(--font-sans); }
 
 .san-moves {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
+/* ── Category bar ── */
+.cat-bar {
+  height: 6px;
+  border-radius: 3px 3px 0 0;
+}
+.cat-bar-continuation { background: var(--cat-continuation); }
+.cat-bar-recognition { background: var(--cat-recognition); }
+.cat-bar-concept { background: var(--cat-concept); }
+.cat-bar-error { background: var(--cat-error); }
+
+/* ── Difficulty diamonds ── */
+.diamond {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  border: 1.5px solid currentColor;
+  margin: 0 1.5px;
+}
+.diamond-filled {
+  background: currentColor;
+}
+
+/* ── Side to move indicator ── */
+.side-indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1.5px solid var(--text-primary);
+}
+.side-white { background: var(--bg-card); }
+.side-black { background: var(--text-primary); }
+
+/* ── Keyboard hint ── */
 .kbd {
   display: inline-flex;
   align-items: center;
@@ -97,9 +148,39 @@ body {
   height: 1.5rem;
   padding: 0 0.375rem;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: 0 1px 0 var(--border);
+}
+
+/* ── Tag pills ── */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.625rem;
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+  background: var(--border-light);
+  color: var(--text-secondary);
+  border-radius: 10px;
+}
+
+/* ── Card back geometric pattern ── */
+.card-back-pattern {
+  background-color: #3D3832;
+  background-image:
+    linear-gradient(45deg, #4A453E 25%, transparent 25%),
+    linear-gradient(-45deg, #4A453E 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #4A453E 75%),
+    linear-gradient(-45deg, transparent 75%, #4A453E 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+/* ── Print card proportions (bridge: 57x89mm = ratio 1:1.56) ── */
+.card-ratio {
+  aspect-ratio: 57 / 89;
 }

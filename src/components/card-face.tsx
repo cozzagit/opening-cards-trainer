@@ -1,4 +1,4 @@
-import type { Card, CardResult } from "../types/card";
+import type { Card, CardResult, CardCategory, CardDifficulty } from "../types/card";
 import { Check, X, Clock, ChevronRight, Eye } from "lucide-react";
 
 interface CardFaceProps {
@@ -12,25 +12,58 @@ interface CardFaceProps {
   previousResult?: CardResult;
 }
 
-const CATEGORY_LABELS: Record<string, string> = {
-  continuation: "Continuazione",
-  recognition: "Riconoscimento",
-  concept: "Concetto",
-  error: "Errore tipico",
+const CAT_LABELS: Record<CardCategory, string> = {
+  continuation: "CONTINUAZIONE",
+  recognition: "RICONOSCIMENTO",
+  concept: "CONCETTO",
+  error: "ERRORE",
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  continuation: "#3B82F6",
-  recognition: "#8B5CF6",
-  concept: "#059669",
-  error: "#DC2626",
+const CAT_COLORS: Record<CardCategory, string> = {
+  continuation: "var(--cat-continuation)",
+  recognition: "var(--cat-recognition)",
+  concept: "var(--cat-concept)",
+  error: "var(--cat-error)",
 };
 
-const DIFFICULTY_LABELS: Record<string, string> = {
-  base: "Base",
-  intermediate: "Intermedio",
-  advanced: "Avanzato",
+const CAT_LIGHT: Record<CardCategory, string> = {
+  continuation: "var(--cat-continuation-light)",
+  recognition: "var(--cat-recognition-light)",
+  concept: "var(--cat-concept-light)",
+  error: "var(--cat-error-light)",
 };
+
+const DIFF_DIAMONDS: Record<CardDifficulty, number> = {
+  base: 1,
+  intermediate: 2,
+  advanced: 3,
+};
+
+function DifficultyDiamonds({ level, color }: { level: CardDifficulty; color: string }) {
+  const count = DIFF_DIAMONDS[level];
+  return (
+    <span className="inline-flex items-center gap-0.5" style={{ color }}>
+      {Array.from({ length: 3 }).map((_, i) => (
+        <span
+          key={i}
+          className={`diamond ${i < count ? "diamond-filled" : ""}`}
+          style={{ opacity: i < count ? 1 : 0.3 }}
+        />
+      ))}
+    </span>
+  );
+}
+
+function SideIndicator({ side }: { side: "white" | "black" }) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <div className={`side-indicator ${side === "white" ? "side-white" : "side-black"}`} />
+      <span className="text-xs text-secondary font-sans">
+        {side === "white" ? "Tratto al Bianco" : "Tratto al Nero"}
+      </span>
+    </div>
+  );
+}
 
 export function CardFace({
   card,
@@ -41,64 +74,60 @@ export function CardFace({
   cardIndex,
   totalCards,
 }: CardFaceProps) {
+  const catColor = CAT_COLORS[card.category];
+  const catLight = CAT_LIGHT[card.category];
+
   return (
-    <div className="card-container w-full max-w-xl mx-auto">
+    <div className="card-container w-full max-w-md mx-auto">
       <div className={`card-inner relative ${isRevealed ? "flipped" : ""}`}>
-        {/* FRONT */}
+        {/* ════ FRONT ════ */}
         <div className="card-front absolute inset-0">
-          <div className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden h-full flex flex-col">
-            {/* Card header */}
-            <div className="px-5 pt-4 pb-3 border-b border-border-light">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ background: CATEGORY_COLORS[card.category] }}
-                  />
-                  <span className="text-xs font-medium text-secondary">
-                    {CATEGORY_LABELS[card.category]}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-tertiary">
-                    {DIFFICULTY_LABELS[card.difficulty]}
-                  </span>
-                  <span className="text-xs font-mono text-tertiary">
-                    {cardIndex + 1}/{totalCards}
-                  </span>
-                </div>
-              </div>
-              <h3 className="text-sm font-semibold text-primary">
-                {card.opening}
-              </h3>
-              <p className="text-xs text-secondary">{card.variation}</p>
+          <div className="bg-card rounded-xl shadow-sm overflow-hidden h-full flex flex-col border border-border-light">
+            {/* Zone 1 — Category Bar */}
+            <div
+              className="flex items-center justify-between px-4 py-2"
+              style={{ background: catColor }}
+            >
+              <span className="text-[10px] font-sans font-semibold tracking-widest text-white/90">
+                {CAT_LABELS[card.category]}
+              </span>
+              <DifficultyDiamonds level={card.difficulty} color="rgba(255,255,255,0.9)" />
             </div>
 
-            {/* Moves */}
-            <div className="px-5 py-4 flex-1 flex flex-col">
+            {/* Zone 2 — Opening Identity */}
+            <div className="px-5 pt-4 pb-3">
+              <h3 className="text-lg font-serif font-medium text-primary text-center">
+                {card.opening}
+              </h3>
+              <p className="text-xs text-secondary text-center mt-0.5 font-sans">
+                {card.variation}
+              </p>
+              <div
+                className="mt-3 h-px w-full"
+                style={{ background: catColor, opacity: 0.2 }}
+              />
+            </div>
+
+            {/* Zone 3 — Move Display */}
+            <div className="px-5 flex-1 flex flex-col">
               {card.front.moves_san.length > 0 && (
-                <div className="san-moves text-base text-primary bg-surface rounded-lg px-4 py-3 mb-4">
+                <div className="san-moves text-[15px] leading-relaxed text-primary bg-surface rounded-lg px-4 py-3 mb-3 text-center">
                   {card.front.moves_san.join(" ")}
                 </div>
               )}
 
-              {/* Side to move */}
               {card.front.moves_san.length > 0 && (
-                <div className="flex items-center gap-2 mb-3">
-                  <div
-                    className={`w-3 h-3 rounded-sm border border-border ${
-                      card.side_to_move === "white" ? "bg-white" : "bg-primary"
-                    }`}
-                  />
-                  <span className="text-xs text-secondary">
-                    {card.side_to_move === "white" ? "Tratto al Bianco" : "Tratto al Nero"}
-                  </span>
+                <div className="mb-3">
+                  <SideIndicator side={card.side_to_move} />
                 </div>
               )}
 
-              {/* Question */}
-              <div className="mt-auto">
-                <p className="text-base font-medium text-primary leading-relaxed" style={{ fontFamily: "var(--font-serif)" }}>
+              {/* Zone 4 — Question */}
+              <div
+                className="rounded-lg px-4 py-3 mt-auto mb-3"
+                style={{ background: catLight }}
+              >
+                <p className="text-base font-serif text-primary leading-relaxed">
                   {card.front.question}
                 </p>
               </div>
@@ -108,89 +137,146 @@ export function CardFace({
             <div className="px-5 pb-4">
               <button
                 onClick={onReveal}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-accent text-inverse text-sm font-medium rounded-xl hover:bg-accent-hover transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-inverse text-sm font-sans font-medium rounded-lg transition-colors"
+                style={{ background: "var(--accent)", }}
+                onMouseEnter={(e) => e.currentTarget.style.background = "var(--accent-hover)"}
+                onMouseLeave={(e) => e.currentTarget.style.background = "var(--accent)"}
               >
                 <Eye className="w-4 h-4" />
                 Mostra soluzione
-                <span className="kbd text-inverse/60 bg-accent-hover border-accent-hover shadow-none ml-1">Space</span>
+                <span className="kbd text-inverse/50 bg-white/10 border-white/20 shadow-none ml-1">Space</span>
               </button>
+            </div>
+
+            {/* Zone 5 — Footer */}
+            <div className="px-5 pb-3 flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ background: catColor }} />
+                <span className="text-[10px] font-mono text-tertiary">{card.id}</span>
+              </div>
+              <span className="text-[10px] font-mono text-tertiary">
+                {cardIndex + 1}/{totalCards}
+              </span>
             </div>
           </div>
         </div>
 
-        {/* BACK */}
+        {/* ════ BACK ════ */}
         <div className="card-back absolute inset-0">
-          <div className="bg-card-back text-inverse border border-transparent rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
-            {/* Back header */}
-            <div className="px-5 pt-4 pb-3 border-b border-white/10">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-white/60">Soluzione</span>
-                <span className="text-xs font-mono text-white/40">{card.id}</span>
+          <div className="card-back-pattern rounded-xl overflow-hidden h-full flex flex-col border border-accent/30">
+            {/* Inner content panel */}
+            <div className="flex-1 flex flex-col m-2 rounded-lg bg-[#2C2825] overflow-hidden">
+              {/* Category echo bar */}
+              <div className="h-1" style={{ background: catColor }} />
+
+              {/* Answer header */}
+              <div className="px-5 pt-4 pb-2 text-center">
+                <span
+                  className="text-[10px] font-sans font-semibold tracking-widest"
+                  style={{ color: catColor }}
+                >
+                  RISPOSTA
+                </span>
               </div>
-            </div>
 
-            {/* Answer */}
-            <div className="px-5 py-4 flex-1 flex flex-col">
-              <div className="san-moves text-lg font-semibold text-white bg-white/10 rounded-lg px-4 py-3 mb-4">
-                {card.back.answer_san}
+              {/* Answer display */}
+              <div className="px-5 pb-3">
+                <div className="san-moves text-xl font-bold text-white text-center bg-white/5 rounded-lg px-4 py-3">
+                  {card.back.answer_san}
+                </div>
               </div>
 
-              <p className="text-sm text-white/80 leading-relaxed" style={{ fontFamily: "var(--font-serif)" }}>
-                {card.back.explanation}
-              </p>
+              {/* Explanation */}
+              <div className="px-5 pb-3 flex-1">
+                <div className="border-t border-dashed border-white/10 pt-3">
+                  <p className="text-sm font-serif text-white/75 leading-relaxed">
+                    {card.back.explanation}
+                  </p>
+                </div>
+              </div>
 
+              {/* Tags */}
               {card.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mt-4">
+                <div className="px-5 pb-3 flex flex-wrap gap-1.5">
                   {card.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white/50"
-                    >
+                    <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-white/8 text-white/40 font-sans">
                       {tag}
                     </span>
                   ))}
                 </div>
               )}
-            </div>
 
-            {/* Response buttons */}
-            <div className="px-5 pb-4 space-y-2">
-              <div className="grid grid-cols-3 gap-2">
+              {/* Response buttons */}
+              <div className="px-4 pb-3 space-y-2">
+                <div className="grid grid-cols-3 gap-2">
+                  <ResponseButton
+                    onClick={() => onRespond("correct")}
+                    icon={<Check className="w-4 h-4" />}
+                    label="Sapevo"
+                    kbd="1"
+                    color="var(--correct)"
+                  />
+                  <ResponseButton
+                    onClick={() => onRespond("incorrect")}
+                    icon={<X className="w-4 h-4" />}
+                    label="Non sapevo"
+                    kbd="2"
+                    color="var(--incorrect)"
+                  />
+                  <ResponseButton
+                    onClick={() => onRespond("review")}
+                    icon={<Clock className="w-4 h-4" />}
+                    label="Rivedi"
+                    kbd="3"
+                    color="var(--review)"
+                  />
+                </div>
                 <button
-                  onClick={() => onRespond("correct")}
-                  className="flex flex-col items-center gap-1 px-3 py-2.5 bg-correct/20 text-correct rounded-xl hover:bg-correct/30 transition-colors"
+                  onClick={onNext}
+                  className="w-full flex items-center justify-center gap-1 py-1.5 text-white/30 text-[11px] hover:text-white/50 transition-colors font-sans"
                 >
-                  <Check className="w-4 h-4" />
-                  <span className="text-xs font-medium">Sapevo</span>
-                  <span className="kbd text-correct/60 bg-correct/10 border-correct/20 shadow-none text-[10px]">1</span>
-                </button>
-                <button
-                  onClick={() => onRespond("incorrect")}
-                  className="flex flex-col items-center gap-1 px-3 py-2.5 bg-incorrect/20 text-incorrect rounded-xl hover:bg-incorrect/30 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                  <span className="text-xs font-medium">Non sapevo</span>
-                  <span className="kbd text-incorrect/60 bg-incorrect/10 border-incorrect/20 shadow-none text-[10px]">2</span>
-                </button>
-                <button
-                  onClick={() => onRespond("review")}
-                  className="flex flex-col items-center gap-1 px-3 py-2.5 bg-review/20 text-review rounded-xl hover:bg-review/30 transition-colors"
-                >
-                  <Clock className="w-4 h-4" />
-                  <span className="text-xs font-medium">Rivedi</span>
-                  <span className="kbd text-review/60 bg-review/10 border-review/20 shadow-none text-[10px]">3</span>
+                  Salta <ChevronRight className="w-3 h-3" />
                 </button>
               </div>
-              <button
-                onClick={onNext}
-                className="w-full flex items-center justify-center gap-1 px-4 py-2 text-white/40 text-xs hover:text-white/60 transition-colors"
-              >
-                Salta senza valutare <ChevronRight className="w-3 h-3" />
-              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function ResponseButton({
+  onClick,
+  icon,
+  label,
+  kbd,
+  color,
+}: {
+  onClick: () => void;
+  icon: React.ReactNode;
+  label: string;
+  kbd: string;
+  color: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex flex-col items-center gap-1 px-2 py-2.5 rounded-lg transition-colors"
+      style={{
+        background: `color-mix(in srgb, ${color} 15%, transparent)`,
+        color,
+      }}
+      onMouseEnter={(e) =>
+        (e.currentTarget.style.background = `color-mix(in srgb, ${color} 25%, transparent)`)
+      }
+      onMouseLeave={(e) =>
+        (e.currentTarget.style.background = `color-mix(in srgb, ${color} 15%, transparent)`)
+      }
+    >
+      {icon}
+      <span className="text-[11px] font-sans font-medium">{label}</span>
+      <span className="text-[9px] font-mono opacity-50">{kbd}</span>
+    </button>
   );
 }
