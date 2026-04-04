@@ -1,6 +1,7 @@
 import { CardFace } from "./card-face";
 import { useSession } from "../hooks/use-session";
 import { useKeyboard } from "../hooks/use-keyboard";
+import { useSwipe } from "../hooks/use-swipe";
 import { ArrowLeft, ArrowRight, Home, RotateCcw, Trophy } from "lucide-react";
 import type { Deck } from "../types/card";
 
@@ -30,8 +31,10 @@ export function CardPlayer({ deck, onHome }: CardPlayerProps) {
     );
   }
 
+  const swipeHandlers = useSwipe({ onSwipeLeft: session.next, onSwipeRight: session.prev });
+
   return (
-    <div className="min-h-[100dvh] flex flex-col px-3 py-3 sm:px-4 sm:py-4 max-w-md mx-auto">
+    <div className="min-h-[100dvh] flex flex-col px-3 py-3 sm:px-4 sm:py-4 max-w-md mx-auto" {...swipeHandlers}>
       {/* Compact top bar */}
       <div className="flex items-center justify-between mb-2">
         <button

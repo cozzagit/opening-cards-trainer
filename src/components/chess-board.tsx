@@ -125,19 +125,32 @@ function applyMoves(moves: string[]): string {
         let canReach = false;
         const upperPiece = piece.toUpperCase();
 
+        // Check path is clear for sliding pieces
+        const pathClear = (fromR: number, fromC: number, toR: number, toC: number): boolean => {
+          const stepR = toR === fromR ? 0 : toR > fromR ? 1 : -1;
+          const stepC = toC === fromC ? 0 : toC > fromC ? 1 : -1;
+          let cr = fromR + stepR, cc = fromC + stepC;
+          while (cr !== toR || cc !== toC) {
+            if (board[cr][cc] !== null) return false;
+            cr += stepR;
+            cc += stepC;
+          }
+          return true;
+        };
+
         if (upperPiece === "P") {
           const dir = whiteToMove ? -1 : 1;
           if (dc === 0 && dr === dir && !board[targetRank][targetFile]) canReach = true;
-          if (dc === 0 && dr === 2 * dir && r === (whiteToMove ? 6 : 1)) canReach = true;
-          if (Math.abs(dc) === 1 && dr === dir) canReach = true; // capture or en passant
+          if (dc === 0 && dr === 2 * dir && r === (whiteToMove ? 6 : 1) && !board[r + dir][c] && !board[targetRank][targetFile]) canReach = true;
+          if (Math.abs(dc) === 1 && dr === dir) canReach = true;
         } else if (upperPiece === "N") {
           canReach = (Math.abs(dr) === 2 && Math.abs(dc) === 1) || (Math.abs(dr) === 1 && Math.abs(dc) === 2);
         } else if (upperPiece === "B") {
-          canReach = Math.abs(dr) === Math.abs(dc) && dr !== 0;
+          canReach = Math.abs(dr) === Math.abs(dc) && dr !== 0 && pathClear(r, c, targetRank, targetFile);
         } else if (upperPiece === "R") {
-          canReach = (dr === 0 || dc === 0) && (dr !== 0 || dc !== 0);
+          canReach = (dr === 0 || dc === 0) && (dr !== 0 || dc !== 0) && pathClear(r, c, targetRank, targetFile);
         } else if (upperPiece === "Q") {
-          canReach = (dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc)) && (dr !== 0 || dc !== 0);
+          canReach = (dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc)) && (dr !== 0 || dc !== 0) && pathClear(r, c, targetRank, targetFile);
         } else if (upperPiece === "K") {
           canReach = Math.abs(dr) <= 1 && Math.abs(dc) <= 1;
         }

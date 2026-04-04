@@ -3,6 +3,7 @@ import { DrillCard } from "./drill-card";
 import { loadMastery, recordDrillResponse, orderCardsForDrill, getCardMastery, getDeckSummary } from "../lib/mastery";
 import { recordTrainingDay } from "../lib/streak";
 import { useDrillKeyboard } from "../hooks/use-drill-keyboard";
+import { useSwipe } from "../hooks/use-swipe";
 import { ArrowLeft, ArrowRight, Home, RotateCcw, Award } from "lucide-react";
 import type { Deck, CardMastery } from "../types/card";
 import { MASTERY_COLORS } from "../types/card";
@@ -95,8 +96,10 @@ export function DrillPlayer({ deck, onHome, weakOnly }: DrillPlayerProps) {
     );
   }
 
+  const swipeHandlers = useSwipe({ onSwipeLeft: next, onSwipeRight: prev });
+
   return (
-    <div className="min-h-[100dvh] flex flex-col px-3 py-3 sm:px-4 sm:py-4 max-w-md mx-auto">
+    <div className="min-h-[100dvh] flex flex-col px-3 py-3 sm:px-4 sm:py-4 max-w-md mx-auto" {...swipeHandlers}>
       {/* Top bar */}
       <div className="flex items-center justify-between mb-2">
         <button onClick={onHome} className="p-2 -ml-2 text-tertiary hover:text-secondary transition-colors">
