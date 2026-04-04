@@ -16,7 +16,7 @@
   {
     "deck_id": "sicilian_v1",
     "deck_name": "Difesa Siciliana",
-    "description": "36 carte avanzate: Najdorf (Bg5/Be3/Be2/f3), Dragon Jugoslavo, Sveshnikov, Scheveningen Keres, Taimanov, Rossolimo, Moscow, Alapin, Maroczy Bind, Grand Prix (1.e4 c5)",
+    "description": "36 carte avanzate: Najdorf, Dragon Jugoslavo, Sveshnikov, Scheveningen Keres, Taimanov, Rossolimo, Moscow, Alapin (1.e4 c5)",
     "card_count": 36,
     "file": "sicilian_v1.json"
   },
@@ -30,8 +30,43 @@
   {
     "deck_id": "french_v1",
     "deck_name": "Difesa Francese",
-    "description": "36 carte approfondite: Advance Nh6-f5 e Milner-Barry, Winawer Poisoned Pawn, Classical/McCutcheon, Tarrasch IQP, Rubinstein, rotture ...f6, rerouting alfiere (1.e4 e6)",
+    "description": "36 carte: Advance, Winawer, Classical, McCutcheon, Tarrasch, Rubinstein, rotture tematiche (1.e4 e6)",
     "card_count": 36,
     "file": "french_v1.json"
+  },
+  {
+    "deck_id": "ruy_lopez_v1",
+    "deck_name": "Partita Spagnola",
+    "description": "36 carte: Chiusa (Chigorin/Breyer/Zaitsev), Marshall Attack, Berlino, Scambio, Arkhangelsk (1.e4 e5 2.Nf3 Nc6 3.Bb5)",
+    "card_count": 36,
+    "file": "ruy_lopez_v1.json"
+  },
+  {
+    "deck_id": "london_v1",
+    "deck_name": "Sistema London",
+    "description": "36 carte: struttura piramidale e3-d4-c3, anti-London ...Ch5, Jobava London, rotture e4/c4, piani lato di re (1.d4 Af4)",
+    "card_count": 36,
+    "file": "london_v1.json"
+  },
+  {
+    "deck_id": "caro_kann_v1",
+    "deck_name": "Difesa Caro-Kann",
+    "description": "36 carte: Classica, Avanzata, Due Cavalli, Panov-Botvinnik, Fantasy, struttura ...c6-d5 (1.e4 c6)",
+    "card_count": 36,
+    "file": "caro_kann_v1.json"
+  },
+  {
+    "deck_id": "queens_gambit_v1",
+    "deck_name": "Gambetto di Donna",
+    "description": "36 carte: QGD Ortodossa, Tartakower, Accettato, Slava, Semi-Slava Meran/Botvinnik, Tarrasch, Scambio (1.d4 d5 2.c4)",
+    "card_count": 36,
+    "file": "queens_gambit_v1.json"
+  },
+  {
+    "deck_id": "kings_indian_v1",
+    "deck_name": "Indiana di Re",
+    "description": "36 carte: Classica Mar del Plata, Sämisch, 4 Pedoni, Fianchetto, Bayonet Attack, rottura ...f5, sacrificio Txc3 (1.d4 Nf6 2.c4 g6)",
+    "card_count": 36,
+    "file": "kings_indian_v1.json"
   }
 ]
